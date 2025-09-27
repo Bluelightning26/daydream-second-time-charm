@@ -235,9 +235,8 @@ body {
 }
 
 .no-hover .upgrade:hover {
-    transform: none;
-    box-shadow: none;
-    border-color: #e2e8f0;
+    transform: none !important;
+    box-shadow: none !important;
 }
 
 .no-shadows * {
