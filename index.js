@@ -6,16 +6,18 @@ class SacrificeClicker {
         this.doubloonsPerSecond = 0;
 
         // Normal upgrades (non-permanent UX changes)
+        // normalUpgrades now store levels (0 = unpurchased). They can be bought multiple times.
         this.normalUpgrades = {
-            'normal-strength': false,
-            'normal-autoclicker': false,
-            'normal-pressers': false,
-            'normal-apprentice': false,
-            'normal-factory': false,
-            'normal-empire': false
+            'normal-strength': 0,
+            'normal-autoclicker': 0,
+            'normal-pressers': 0,
+            'normal-apprentice': 0,
+            'normal-factory': 0,
+            'normal-empire': 0
         };
 
-        this.normalUpgradeCosts = {
+        // base costs for level 0 -> level 1 purchase
+        this.normalUpgradeBaseCosts = {
             'normal-strength': 10,
             'normal-autoclicker': 50,
             'normal-pressers': 200,
@@ -23,6 +25,9 @@ class SacrificeClicker {
             'normal-factory': 5000,
             'normal-empire': 20000
         };
+
+        // cost multiplier per level
+        this.normalUpgradeCostMultiplier = 1.15;
 
         this.sacrifices = {
             color: false,
@@ -180,13 +185,22 @@ class SacrificeClicker {
         }
     }
 
+    // Calculate current cost for a normal upgrade given its key and current level
+    getNormalUpgradeCost(upg) {
+        const base = this.normalUpgradeBaseCosts[upg] || 0;
+        const level = this.normalUpgrades[upg] || 0;
+        return Math.ceil(base * Math.pow(this.normalUpgradeCostMultiplier, level));
+    }
+
     buyNormalUpgrade(upg) {
-        if (this.normalUpgrades[upg] || this.doubloons < this.normalUpgradeCosts[upg]) return;
+        const cost = this.getNormalUpgradeCost(upg);
+        if (this.doubloons < cost) return;
 
-        this.doubloons -= this.normalUpgradeCosts[upg];
-        this.normalUpgrades[upg] = true;
+        // Deduct and increment level
+        this.doubloons -= cost;
+        this.normalUpgrades[upg] = (this.normalUpgrades[upg] || 0) + 1;
 
-        // Apply effects for normal upgrades
+        // Apply effects per purchase (scaled by 1 each level)
         switch(upg) {
             case 'normal-strength':
                 this.doubloonsPerClick += 1;
@@ -241,15 +255,32 @@ class SacrificeClicker {
             }
         });
 
-        // Normal upgrades display
+        // Normal upgrades display (show level and next-cost)
         Object.keys(this.normalUpgrades).forEach(upg => {
             const el = document.getElementById(`upgrade-${upg}`);
             if (!el) return;
 
-            if (this.normalUpgrades[upg]) {
+            const level = this.normalUpgrades[upg] || 0;
+            const cost = this.getNormalUpgradeCost(upg);
+
+            // Update cost text inside the element
+            const costEl = el.querySelector('.upgrade-cost');
+            if (costEl) {
+                costEl.textContent = `Cost: ${cost} doubloons`;
+            }
+
+            // Indicate affordable/purchased states
+            if (level > 0) {
                 el.classList.add('purchased');
                 el.classList.remove('affordable', 'unaffordable');
-            } else if (this.doubloons >= this.normalUpgradeCosts[upg]) {
+                // set level on name (replace any previous Level suffix)
+                const nameEl = el.querySelector('.upgrade-name');
+                if (nameEl) {
+                    // remove any existing " (Level X)" suffix
+                    const baseName = nameEl.textContent.replace(/\s*\(Level\s*\d+\)\s*$/, '');
+                    nameEl.textContent = `${baseName} (Level ${level})`;
+                }
+            } else if (this.doubloons >= cost) {
                 el.classList.add('affordable');
                 el.classList.remove('unaffordable');
             } else {
