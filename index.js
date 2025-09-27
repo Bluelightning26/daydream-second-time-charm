@@ -28,7 +28,7 @@ class SacrificeClicker {
         };
 
         // cost multiplier per level
-        this.normalUpgradeCostMultiplier = 1.15;
+        this.normalUpgradeCostMultiplier = 1.8;
 
         this.sacrifices = {
             color: false,
@@ -43,7 +43,6 @@ class SacrificeClicker {
         };
 
         this.upgradeCosts = {
-            
             size: 100,
             animations: 500,
             text: 1000,
