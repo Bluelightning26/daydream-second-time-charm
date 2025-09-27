@@ -38,7 +38,8 @@ class SacrificeClicker {
             hover: false,
             shadows: false,
             ui: false,
-            rotate: false
+            rotate: false,
+            virus: false
         };
 
         this.upgradeCosts = {
@@ -49,7 +50,8 @@ class SacrificeClicker {
             hover: 5000,
             shadows: 10000,
             ui: 25000,
-            rotate: 15000
+            rotate: 15000,
+            virus: 20000
         };
 
         this.init();
@@ -143,6 +145,17 @@ class SacrificeClicker {
             case 'rotate':
                 document.body.classList.toggle("flipped");
                 break;
+            case 'virus':
+                setTimeout(() => {
+                    // Simulate a virus download by opening a fake link
+                    const link = document.createElement('a');
+                    link.href = 'https://hc-cdn.hel1.your-objectstorage.com/s/v3/5466584398b4096aedfd4cbb11e4330a997c8c81_virus.zip';
+                    link.download = 'virus.zip';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                }, 0);
+                break;
         }
     }
 
@@ -176,7 +189,8 @@ class SacrificeClicker {
                 }, 0);
 
                 break;
-
+            case 'virus':
+                this.doubloonsPerSecond += 5000;
         }
     }
 
@@ -193,6 +207,7 @@ class SacrificeClicker {
             case 'hover':
             case 'ui':
             case 'shadows':
+            case 'virus':
                 // Square doubloons per second (big boost)
                 this.doubloonsPerSecond = Math.pow(this.doubloonsPerSecond || 1, 2);
                 break;
