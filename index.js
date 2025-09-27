@@ -268,7 +268,11 @@ class SacrificeClicker {
     }
 
     updateDisplay() {
-        document.getElementById('score').textContent = `${Math.floor(this.doubloons)} doubloons`;
+        if (this.doubloons < 2) {
+            document.getElementById('score').textContent = `${Math.floor(this.doubloons)} doubloon`;
+        } else {
+            document.getElementById('score').textContent = `${Math.floor(this.doubloons)} doubloons`;
+        }
         document.getElementById('perClick').textContent = this.doubloonsPerClick;
         document.getElementById('perSecond').textContent = this.doubloonsPerSecond.toFixed(1);
         document.getElementById('totalClicks').textContent = this.totalClicks;
