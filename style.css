@@ -186,12 +186,12 @@ body {
     box-shadow: 0 5px 15px rgba(229, 62, 62, 0.2);
 }
 
-.upgrade.affordable {
+.upgrade.affordable.not-purchased {
     border-color: #e53e3e;
     background: #f5bde6;
 }
 
-.upgrade.unaffordable {
+.upgrade.unaffordable.not-purchased {
     opacity: 0.5;
     cursor: not-allowed;
 }
@@ -200,6 +200,11 @@ body {
     background: #2d3748;
     color: white;
     border-color: #2d3748;
+}
+
+.upgrade.unaffordable.purchased {
+    border-color: #e53e3e !important;
+    opacity: 0.7;
 }
 
 .upgrade-name {

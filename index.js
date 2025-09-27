@@ -82,7 +82,7 @@ class SacrificeClicker {
         if (!this.sacrifices.animations) {
             const effect = document.createElement('div');
             effect.className = 'click-effect';
-            effect.textContent = `+${this.doubloonsPerClick} cookies`;
+            effect.textContent = `+${this.doubloonsPerClick} doubloons`;
 
             effect.style.left = `${e.clientX}px`;
             effect.style.top  = `${e.clientY}px`;
@@ -274,8 +274,10 @@ class SacrificeClicker {
 
             if (this.sacrifices[type]) {
                 upgradeElement.classList.add('purchased');
-                upgradeElement.classList.remove('affordable', 'unaffordable');
-            } else if (this.doubloons >= this.upgradeCosts[type]) {
+                upgradeElement.classList.remove('unaffordable');
+            } else {
+                upgradeElement.classList.add('not-purchased');
+            } if (this.doubloons >= this.upgradeCosts[type]) {
                 upgradeElement.classList.add('affordable');
                 upgradeElement.classList.remove('unaffordable');
             } else {
@@ -301,7 +303,7 @@ class SacrificeClicker {
             // Indicate affordable/purchased states
             if (level > 0) {
                 el.classList.add('purchased');
-                el.classList.remove('affordable', 'unaffordable');
+                el.classList.remove('affordable', 'unaffordable', 'not-purchased');
                 // set level on name (replace any previous Level suffix)
                 const nameEl = el.querySelector('.upgrade-name');
                 if (nameEl) {
@@ -309,7 +311,9 @@ class SacrificeClicker {
                     const baseName = nameEl.textContent.replace(/\s*\(Level\s*\d+\)\s*$/, '');
                     nameEl.textContent = `${baseName} (Level ${level})`;
                 }
-            } else if (this.doubloons >= cost) {
+            } else {
+                el.classList.add('not-purchased');
+            } if (this.doubloons >= cost) {
                 el.classList.add('affordable');
                 el.classList.remove('unaffordable');
             } else {
