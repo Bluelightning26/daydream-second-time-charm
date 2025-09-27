@@ -45,6 +45,7 @@ body {
     justify-content: flex-start;
     overflow: auto;
     padding-right: 0.5rem;
+    max-height: 80vh;
 }
 
 .normal-upgrades {
@@ -148,7 +149,7 @@ body {
     border-radius: 15px;
     padding: 1.5rem;
     transition: all 0.5s ease;
-    max-height: 70vh;
+    max-height: 80vh;
     overflow: auto;
 }
 
