@@ -1,6 +1,6 @@
 class SacrificeClicker {
     constructor() {
-        this.doubloons = 1e9; // Start with a billion doubloons for testing
+        this.doubloons = 0; // Start with a billion doubloons for testing
         this.totalClicks = 0;
         this.doubloonsPerClick = 1;
         this.doubloonsPerSecond = 0;
