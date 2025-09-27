@@ -1,9 +1,9 @@
 class SacrificeClicker {
     constructor() {
-        this.cookies = 1e9; // Start with a billion cookies for testing
+        this.doubloons = 1e9; // Start with a billion doubloons for testing
         this.totalClicks = 0;
-        this.cookiesPerClick = 1;
-        this.cookiesPerSecond = 0;
+        this.doubloonsPerClick = 1;
+        this.doubloonsPerSecond = 0;
 
         // Normal upgrades (non-permanent UX changes)
         this.normalUpgrades = {
@@ -66,14 +66,14 @@ class SacrificeClicker {
     }
 
     clickCookie(e) {
-        this.cookies += this.cookiesPerClick;
+        this.doubloons += this.doubloonsPerClick;
         this.totalClicks++;
 
         // Create click effect (if animations aren't sacrificed)
         if (!this.sacrifices.animations) {
             const effect = document.createElement('div');
             effect.className = 'click-effect';
-            effect.textContent = `+${this.cookiesPerClick}`;
+            effect.textContent = `+${this.doubloonsPerClick}`;
             effect.style.left = Math.random() * 100 + 'px';
             effect.style.top = Math.random() * 100 + 'px';
 
@@ -87,11 +87,11 @@ class SacrificeClicker {
     }
 
     makeSacrifice(type) {
-        if (this.sacrifices[type] || this.cookies < this.upgradeCosts[type]) {
+        if (this.sacrifices[type] || this.doubloons < this.upgradeCosts[type]) {
             return;
         }
 
-        this.cookies -= this.upgradeCosts[type];
+        this.doubloons -= this.upgradeCosts[type];
         this.sacrifices[type] = true;
 
         // Apply the sacrifice effect
@@ -138,25 +138,25 @@ class SacrificeClicker {
     applySacrificeBenefit(type) {
         switch(type) {
             case 'color':
-                this.cookiesPerClick += 5;
+                this.doubloonsPerClick += 5;
                 break;
             case 'size':
-                this.cookiesPerSecond += 10;
+                this.doubloonsPerSecond += 10;
                 break;
             case 'animations':
-                this.cookiesPerClick += 20;
+                this.doubloonsPerClick += 20;
                 break;
             case 'text':
-                this.cookiesPerSecond += 50;
+                this.doubloonsPerSecond += 50;
                 break;
             case 'hover':
-                this.cookiesPerClick += 100;
+                this.doubloonsPerClick += 100;
                 break;
             case 'shadows':
-                this.cookiesPerSecond += 200;
+                this.doubloonsPerSecond += 200;
                 break;
             case 'ui':
-                this.cookiesPerClick += 1000;
+                this.doubloonsPerClick += 1000;
                 break;
         }
     }
@@ -166,47 +166,47 @@ class SacrificeClicker {
         switch(type) {
             case 'color':
             case 'animations':
-            case 'hover':
-            case 'ui':
-                // Multiply cookies per click by 10
-                this.cookiesPerClick *= 10;
-                break;
             case 'size':
             case 'text':
+                // Multiply doubloons per click by 10
+                this.doubloonsPerClick *= 10;
+                break;
+            case 'hover':
+            case 'ui':
             case 'shadows':
-                // Square cookies per second (big boost)
-                this.cookiesPerSecond = Math.pow(this.cookiesPerSecond || 1, 2);
+                // Square doubloons per second (big boost)
+                this.doubloonsPerSecond = Math.pow(this.doubloonsPerSecond || 1, 2);
                 break;
         }
     }
 
     buyNormalUpgrade(upg) {
-        if (this.normalUpgrades[upg] || this.cookies < this.normalUpgradeCosts[upg]) return;
+        if (this.normalUpgrades[upg] || this.doubloons < this.normalUpgradeCosts[upg]) return;
 
-        this.cookies -= this.normalUpgradeCosts[upg];
+        this.doubloons -= this.normalUpgradeCosts[upg];
         this.normalUpgrades[upg] = true;
 
         // Apply effects for normal upgrades
         switch(upg) {
             case 'normal-strength':
-                this.cookiesPerClick += 1;
+                this.doubloonsPerClick += 1;
                 break;
             case 'normal-autoclicker':
-                this.cookiesPerSecond += 1;
+                this.doubloonsPerSecond += 1;
                 break;
             case 'normal-pressers':
-                this.cookiesPerClick += 3;
+                this.doubloonsPerClick += 3;
                 break;
             case 'normal-apprentice':
-                this.cookiesPerSecond += 5;
+                this.doubloonsPerSecond += 5;
                 break;
             case 'normal-factory':
-                this.cookiesPerClick += 10;
-                this.cookiesPerSecond += 20;
+                this.doubloonsPerClick += 10;
+                this.doubloonsPerSecond += 20;
                 break;
             case 'normal-empire':
-                this.cookiesPerClick += 50;
-                this.cookiesPerSecond += 100;
+                this.doubloonsPerClick += 50;
+                this.doubloonsPerSecond += 100;
                 break;
         }
 
@@ -214,15 +214,15 @@ class SacrificeClicker {
     }
 
     gameLoop() {
-        // Add cookies from CPS
-        this.cookies += this.cookiesPerSecond / 10;
+        // Add doubloons from CPS
+        this.doubloons += this.doubloonsPerSecond / 10;
         this.updateDisplay();
     }
 
     updateDisplay() {
-        document.getElementById('score').textContent = `${Math.floor(this.cookies)} cookies`;
-        document.getElementById('perClick').textContent = this.cookiesPerClick;
-        document.getElementById('perSecond').textContent = this.cookiesPerSecond.toFixed(1);
+        document.getElementById('score').textContent = `${Math.floor(this.doubloons)} doubloons`;
+        document.getElementById('perClick').textContent = this.doubloonsPerClick;
+        document.getElementById('perSecond').textContent = this.doubloonsPerSecond.toFixed(1);
         document.getElementById('totalClicks').textContent = this.totalClicks;
 
         // Update upgrade displays
@@ -232,7 +232,7 @@ class SacrificeClicker {
             if (this.sacrifices[type]) {
                 upgradeElement.classList.add('purchased');
                 upgradeElement.classList.remove('affordable', 'unaffordable');
-            } else if (this.cookies >= this.upgradeCosts[type]) {
+            } else if (this.doubloons >= this.upgradeCosts[type]) {
                 upgradeElement.classList.add('affordable');
                 upgradeElement.classList.remove('unaffordable');
             } else {
@@ -249,7 +249,7 @@ class SacrificeClicker {
             if (this.normalUpgrades[upg]) {
                 el.classList.add('purchased');
                 el.classList.remove('affordable', 'unaffordable');
-            } else if (this.cookies >= this.normalUpgradeCosts[upg]) {
+            } else if (this.doubloons >= this.normalUpgradeCosts[upg]) {
                 el.classList.add('affordable');
                 el.classList.remove('unaffordable');
             } else {
