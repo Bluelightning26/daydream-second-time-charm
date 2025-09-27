@@ -5,6 +5,25 @@ class SacrificeClicker {
         this.cookiesPerClick = 1;
         this.cookiesPerSecond = 0;
 
+        // Normal upgrades (non-permanent UX changes)
+        this.normalUpgrades = {
+            'normal-strength': false,
+            'normal-autoclicker': false,
+            'normal-pressers': false,
+            'normal-apprentice': false,
+            'normal-factory': false,
+            'normal-empire': false
+        };
+
+        this.normalUpgradeCosts = {
+            'normal-strength': 10,
+            'normal-autoclicker': 50,
+            'normal-pressers': 200,
+            'normal-apprentice': 1000,
+            'normal-factory': 5000,
+            'normal-empire': 20000
+        };
+
         this.sacrifices = {
             color: false,
             size: false,
@@ -34,6 +53,11 @@ class SacrificeClicker {
         // Add upgrade listeners
         Object.keys(this.sacrifices).forEach(sacrifice => {
             document.getElementById(`upgrade-${sacrifice}`).addEventListener('click', () => this.makeSacrifice(sacrifice));
+        });
+
+        // Normal upgrade listeners
+        Object.keys(this.normalUpgrades).forEach(upg => {
+            document.getElementById(`upgrade-${upg}`).addEventListener('click', () => this.buyNormalUpgrade(upg));
         });
 
         // Start the game loop
@@ -75,6 +99,10 @@ class SacrificeClicker {
 
         // Apply the benefit
         this.applySacrificeBenefit(type);
+
+        // Sacrifices are dramatically more powerful than normal upgrades.
+        // We'll apply an additional global multiplier depending on the sacrifice type.
+        this.applySacrificeMultiplier(type);
 
         this.updateDisplay();
     }
@@ -133,6 +161,58 @@ class SacrificeClicker {
         }
     }
 
+    applySacrificeMultiplier(type) {
+        // Two kinds of powerful effects: some sacrifices multiply totals by 10, others square the income rates.
+        switch(type) {
+            case 'color':
+            case 'animations':
+            case 'hover':
+            case 'ui':
+                // Multiply cookies per click by 10
+                this.cookiesPerClick *= 10;
+                break;
+            case 'size':
+            case 'text':
+            case 'shadows':
+                // Square cookies per second (big boost)
+                this.cookiesPerSecond = Math.pow(this.cookiesPerSecond || 1, 2);
+                break;
+        }
+    }
+
+    buyNormalUpgrade(upg) {
+        if (this.normalUpgrades[upg] || this.cookies < this.normalUpgradeCosts[upg]) return;
+
+        this.cookies -= this.normalUpgradeCosts[upg];
+        this.normalUpgrades[upg] = true;
+
+        // Apply effects for normal upgrades
+        switch(upg) {
+            case 'normal-strength':
+                this.cookiesPerClick += 1;
+                break;
+            case 'normal-autoclicker':
+                this.cookiesPerSecond += 1;
+                break;
+            case 'normal-pressers':
+                this.cookiesPerClick += 3;
+                break;
+            case 'normal-apprentice':
+                this.cookiesPerSecond += 5;
+                break;
+            case 'normal-factory':
+                this.cookiesPerClick += 10;
+                this.cookiesPerSecond += 20;
+                break;
+            case 'normal-empire':
+                this.cookiesPerClick += 50;
+                this.cookiesPerSecond += 100;
+                break;
+        }
+
+        this.updateDisplay();
+    }
+
     gameLoop() {
         // Add cookies from CPS
         this.cookies += this.cookiesPerSecond / 10;
@@ -158,6 +238,23 @@ class SacrificeClicker {
             } else {
                 upgradeElement.classList.remove('affordable');
                 upgradeElement.classList.add('unaffordable');
+            }
+        });
+
+        // Normal upgrades display
+        Object.keys(this.normalUpgrades).forEach(upg => {
+            const el = document.getElementById(`upgrade-${upg}`);
+            if (!el) return;
+
+            if (this.normalUpgrades[upg]) {
+                el.classList.add('purchased');
+                el.classList.remove('affordable', 'unaffordable');
+            } else if (this.cookies >= this.normalUpgradeCosts[upg]) {
+                el.classList.add('affordable');
+                el.classList.remove('unaffordable');
+            } else {
+                el.classList.remove('affordable');
+                el.classList.add('unaffordable');
             }
         });
     }
