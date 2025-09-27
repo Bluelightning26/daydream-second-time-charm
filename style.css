@@ -13,7 +13,7 @@ body {
     justify-content: center;
     color: #48bb78;
     transition: all 0.5s ease;
-    padding: 56px 28px; /* ensure purple background around white container */
+    padding: 56px 28px;
 }
 
 .game-container {
@@ -24,7 +24,6 @@ body {
     max-width: 1500px;
     width: 96%;
     display: grid;
-    /* left and right columns wider and equal */
     grid-template-columns: 340px 1fr 340px;
     gap: 2rem;
     transition: all 0.5s ease;
@@ -116,13 +115,13 @@ body {
 }
 
 .click-effect {
-    position: fixed;              /* use viewport coords */
-    z-index: 9999;                /* on top */
+    position: fixed;
+    z-index: 9999;
     pointer-events: none;
     color: #48bb78;
     font-weight: bold;
     font-size: 1.5rem;
-    transform: translate(-50%, 0); /* center horizontally over cursor */
+    transform: translate(-50%, 0);
     animation: floatUp 1s ease-out forwards;
 }
 
