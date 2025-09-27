@@ -284,3 +284,8 @@ body {
         font-size: 2rem;
     }
 }
+
+.flipped {
+    transform: rotate(180deg);
+    transform-origin: center center;
+}

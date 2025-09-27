@@ -1,6 +1,10 @@
 class SacrificeClicker {
     constructor() {
+<<<<<<< HEAD
         this.doubloons = 10e6; // Start with a billion doubloons for testing
+=======
+        this.doubloons = 10000000; // Start with a billion doubloons for testing
+>>>>>>> 911cfd9 (feat: no gravity)
         this.totalClicks = 0;
         this.doubloonsPerClick = 1;
         this.doubloonsPerSecond = 0;
@@ -36,7 +40,8 @@ class SacrificeClicker {
             text: false,
             hover: false,
             shadows: false,
-            ui: false
+            ui: false,
+            rotate: false
         };
 
         this.upgradeCosts = {
@@ -46,7 +51,8 @@ class SacrificeClicker {
             text: 2000,
             hover: 5000,
             shadows: 10000,
-            ui: 25000
+            ui: 25000,
+            rotate: 15000
         };
 
         this.init();
@@ -136,6 +142,9 @@ class SacrificeClicker {
                 break;
             case 'ui':
                 body.classList.add('minimal-ui');
+                break;
+            case 'rotate':
+                document.body.classList.toggle("flipped");
                 break;
         }
     }
