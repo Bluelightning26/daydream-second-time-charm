@@ -13,19 +13,22 @@ body {
     justify-content: center;
     color: #333;
     transition: all 0.5s ease;
+    padding: 56px 28px; /* ensure purple background around white container */
 }
 
 .game-container {
     background: white;
     border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    box-shadow: 0 24px 48px rgba(0,0,0,0.12);
     padding: 2rem;
-    max-width: 800px;
-    width: 90%;
+    max-width: 1500px;
+    width: 96%;
     display: grid;
-    grid-template-columns: 220px 1fr 300px;
+    /* left and right columns wider and equal */
+    grid-template-columns: 340px 1fr 340px;
     gap: 2rem;
     transition: all 0.5s ease;
+    min-height: 72vh;
 }
 
 .main-area {
@@ -40,6 +43,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    overflow: auto;
+    padding-right: 0.5rem;
 }
 
 .normal-upgrades {
@@ -143,6 +148,8 @@ body {
     border-radius: 15px;
     padding: 1.5rem;
     transition: all 0.5s ease;
+    max-height: 70vh;
+    overflow: auto;
 }
 
 .upgrades h2 {
