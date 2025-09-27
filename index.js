@@ -43,12 +43,12 @@ class SacrificeClicker {
         };
 
         this.upgradeCosts = {
-            color: 100,
-            size: 500,
-            animations: 1000,
-            text: 2000,
-            hover: 5000,
-            shadows: 10000,
+            color: 10000,
+            size: 100,
+            animations: 500,
+            text: 1000,
+            hover: 2000,
+            shadows: 5000,
             ui: 25000,
             rotate: 15000,
             virus: 20000
