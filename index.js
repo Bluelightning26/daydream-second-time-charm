@@ -202,7 +202,7 @@ class SacrificeClicker {
             case 'size':
             case 'text':
                 // Multiply doubloons per click by 10
-                this.doubloonsPerClick *= 10;
+                this.doubloonsPerSecond *= 10;
                 break;
             case 'hover':
             case 'ui':
