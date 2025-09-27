@@ -11,13 +11,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #333;
+    color: #48bb78;
     transition: all 0.5s ease;
     padding: 56px 28px; /* ensure purple background around white container */
 }
 
 .game-container {
-    background: white;
+    background: #7dc4e4;
     border-radius: 20px;
     box-shadow: 0 24px 48px rgba(0,0,0,0.12);
     padding: 2rem;
@@ -49,7 +49,7 @@ body {
 }
 
 .normal-upgrades {
-    background: #f7fafc;
+    background: #8bd5ca;
     border-radius: 15px;
     padding: 1rem;
     margin-top: 1.25rem;
@@ -145,7 +145,7 @@ body {
 }
 
 .upgrades {
-    background: #f7fafc;
+    background: #f5a97f;
     border-radius: 15px;
     padding: 1.5rem;
     transition: all 0.5s ease;
@@ -161,7 +161,7 @@ body {
 }
 
 .upgrade {
-    background: white;
+    background: #f5bde6;
     border: 2px solid #e2e8f0;
     border-radius: 10px;
     padding: 1rem;
@@ -178,7 +178,7 @@ body {
 
 .upgrade.affordable {
     border-color: #e53e3e;
-    background: #fff5f5;
+    background: #ea76cb;
 }
 
 .upgrade.unaffordable {
