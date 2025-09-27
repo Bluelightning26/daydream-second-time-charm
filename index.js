@@ -1,6 +1,6 @@
 class SacrificeClicker {
     constructor() {
-        this.cookies = 0;
+        this.cookies = 1e9; // Start with a billion cookies for testing
         this.totalClicks = 0;
         this.cookiesPerClick = 1;
         this.cookiesPerSecond = 0;
