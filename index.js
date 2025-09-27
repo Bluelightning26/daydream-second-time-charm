@@ -79,22 +79,22 @@ class SacrificeClicker {
         this.doubloons += this.doubloonsPerClick;
         this.totalClicks++;
 
-        // Create click effect (if animations aren't sacrificed)
         if (!this.sacrifices.animations) {
             const effect = document.createElement('div');
             effect.className = 'click-effect';
-            effect.textContent = `+${this.doubloonsPerClick}`;
-            effect.style.left = Math.random() * 100 + 'px';
-            effect.style.top = Math.random() * 100 + 'px';
+            effect.textContent = `+${this.doubloonsPerClick} doubloons`;
 
-            const cookie = document.getElementById('cookie');
-            cookie.appendChild(effect);
+            effect.style.left = `${e.clientX}px`;
+            effect.style.top  = `${e.clientY}px`;
+
+            document.body.appendChild(effect);
 
             setTimeout(() => effect.remove(), 1000);
         }
 
         this.updateDisplay();
     }
+
 
     makeSacrifice(type) {
         if (this.sacrifices[type] || this.doubloons < this.upgradeCosts[type]) {
@@ -202,7 +202,7 @@ class SacrificeClicker {
             case 'size':
             case 'text':
                 // Multiply doubloons per click by 10
-                this.doubloonsPerClick *= 10;
+                this.doubloonsPerSecond *= 10;
                 break;
             case 'hover':
             case 'ui':
