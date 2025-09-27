@@ -1,7 +1,7 @@
 class SacrificeClicker {
     constructor() {
 
-        this.doubloons = 1; // Start with a billion doubloons for testing
+        this.doubloons = 2; // Start with a billion doubloons for testing
         this.totalClicks = 0;
         this.doubloonsPerClick = 1;
         this.doubloonsPerSecond = 0;
@@ -82,7 +82,12 @@ class SacrificeClicker {
         if (!this.sacrifices.animations) {
             const effect = document.createElement('div');
             effect.className = 'click-effect';
-            effect.textContent = `+${this.doubloonsPerClick} doubloons`;
+
+            if (this.doubloonsPerClick < 2){
+                effect.textContent = `+${this.doubloonsPerClick} doubloon`;
+            } else {
+                effect.textContent = `+${this.doubloonsPerClick} doubloons`;
+            }
 
             effect.style.left = `${e.clientX}px`;
             effect.style.top  = `${e.clientY}px`;
@@ -263,7 +268,11 @@ class SacrificeClicker {
     }
 
     updateDisplay() {
-        document.getElementById('score').textContent = `${Math.floor(this.doubloons)} doubloons`;
+        if (this.doubloons < 2) {
+            document.getElementById('score').textContent = `${Math.floor(this.doubloons)} doubloon`;
+        } else {
+            document.getElementById('score').textContent = `${Math.floor(this.doubloons)} doubloons`;
+        }
         document.getElementById('perClick').textContent = this.doubloonsPerClick;
         document.getElementById('perSecond').textContent = this.doubloonsPerSecond.toFixed(1);
         document.getElementById('totalClicks').textContent = this.totalClicks;
