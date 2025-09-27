@@ -1,0 +1,256 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    transition: all 0.5s ease;
+}
+
+.game-container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    padding: 2rem;
+    max-width: 800px;
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 2rem;
+    transition: all 0.5s ease;
+}
+
+.main-area {
+    text-align: center;
+}
+
+.score {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #4a5568;
+    margin-bottom: 1rem;
+    transition: all 0.5s ease;
+}
+
+.cookie {
+    width: 200px;
+    height: 200px;
+    background: #d69e2e;
+    border-radius: 50%;
+    border: 8px solid #b7791f;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 2rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.cookie:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.cookie:active {
+    transform: scale(0.95);
+}
+
+.cookie::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    width: 15px;
+    height: 15px;
+    background: #8b4513;
+    border-radius: 50%;
+    box-shadow:
+            25px 10px 0 #8b4513,
+            -10px 25px 0 #8b4513,
+            40px 35px 0 #8b4513,
+            15px 45px 0 #8b4513,
+            50px 15px 0 #8b4513;
+    transition: all 0.5s ease;
+}
+
+.click-effect {
+    position: absolute;
+    color: #48bb78;
+    font-weight: bold;
+    font-size: 1.5rem;
+    pointer-events: none;
+    animation: floatUp 1s ease-out forwards;
+}
+
+@keyframes floatUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: #666;
+    transition: all 0.5s ease;
+}
+
+.upgrades {
+    background: #f7fafc;
+    border-radius: 15px;
+    padding: 1.5rem;
+    transition: all 0.5s ease;
+}
+
+.upgrades h2 {
+    color: #2d3748;
+    margin-bottom: 1rem;
+    text-align: center;
+    transition: all 0.5s ease;
+}
+
+.upgrade {
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upgrade:hover {
+    border-color: #e53e3e;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(229, 62, 62, 0.2);
+}
+
+.upgrade.affordable {
+    border-color: #e53e3e;
+    background: #fff5f5;
+}
+
+.upgrade.unaffordable {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.upgrade.purchased {
+    background: #2d3748;
+    color: white;
+    border-color: #2d3748;
+}
+
+.upgrade-name {
+    font-weight: bold;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+}
+
+.upgrade.purchased .upgrade-name {
+    color: white;
+}
+
+.upgrade-description {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.upgrade.purchased .upgrade-description {
+    color: #cbd5e0;
+}
+
+.upgrade-cost {
+    font-weight: bold;
+    color: #e53e3e;
+}
+
+.upgrade.purchased .upgrade-cost {
+    color: #fc8181;
+}
+
+.sacrifice-warning {
+    background: #fed7d7;
+    border: 2px solid #e53e3e;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    color: #c53030;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Sacrifice effects */
+.no-color {
+    filter: grayscale(100%);
+}
+
+.small-cookie .cookie {
+    width: 100px;
+    height: 100px;
+    font-size: 2rem;
+}
+
+.no-animations * {
+    animation: none !important;
+    transition: none !important;
+}
+
+.tiny-text {
+    font-size: 0.7em;
+}
+
+.no-hover .upgrade:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: #e2e8f0;
+}
+
+.no-shadows * {
+    box-shadow: none !important;
+}
+
+.minimal-ui .upgrades {
+    display: none;
+}
+
+.minimal-ui .game-container {
+    grid-template-columns: 1fr;
+}
+
+@media (max-width: 768px) {
+    .game-container {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+
+    .cookie {
+        width: 150px;
+        height: 150px;
+        font-size: 2rem;
+    }
+
+    .score {
+        font-size: 2rem;
+    }
+}

@@ -1,78 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Sacrifice Clicker</title>
-    <script src="index.js" defer></script>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<div class="game-container">
-    <div class="main-area">
-        <div class="score" id="score">0 cookies</div>
-        <div class="cookie" id="cookie"></div>
-        <div class="stats">
-            <div>Per Click: <span id="perClick">1</span></div>
-            <div>Per Second: <span id="perSecond">0</span></div>
-            <div>Total Clicked: <span id="totalClicks">0</span></div>
-        </div>
-    </div>
-
-    <div class="upgrades">
-        <h2>Sacrificial Upgrades</h2>
-        <div class="sacrifice-warning">
-            ⚠️ These upgrades will permanently alter the game itself!
-        </div>
-
-        <div class="upgrade" id="upgrade-color">
-            <div class="upgrade-name">Sacrifice Color</div>
-            <div class="upgrade-description">+5 cookies per click, but removes all color from the game</div>
-            <div class="upgrade-cost">Cost: 100 cookies</div>
-        </div>
-
-        <div class="upgrade" id="upgrade-size">
-            <div class="upgrade-name">Sacrifice Size</div>
-            <div class="upgrade-description">+10 cookies per second, but shrinks the cookie button</div>
-            <div class="upgrade-cost">Cost: 500 cookies</div>
-        </div>
-
-        <div class="upgrade" id="upgrade-animations">
-            <div class="upgrade-name">Sacrifice Motion</div>
-            <div class="upgrade-description">+20 cookies per click, but removes all animations</div>
-            <div class="upgrade-cost">Cost: 1000 cookies</div>
-        </div>
-
-        <div class="upgrade" id="upgrade-text">
-            <div class="upgrade-name">Sacrifice Readability</div>
-            <div class="upgrade-description">+50 cookies per second, but makes all text smaller</div>
-            <div class="upgrade-cost">Cost: 2000 cookies</div>
-        </div>
-
-        <div class="upgrade" id="upgrade-hover">
-            <div class="upgrade-name">Sacrifice Interactivity</div>
-            <div class="upgrade-description">+100 cookies per click, but removes hover effects</div>
-            <div class="upgrade-cost">Cost: 5000 cookies</div>
-        </div>
-
-        <div class="upgrade" id="upgrade-shadows">
-            <div class="upgrade-name">Sacrifice Depth</div>
-            <div class="upgrade-description">+200 cookies per second, but removes all shadows</div>
-            <div class="upgrade-cost">Cost: 10000 cookies</div>
-        </div>
-
-        <div class="upgrade" id="upgrade-ui">
-            <div class="upgrade-name">Sacrifice Interface</div>
-            <div class="upgrade-description">+1000 cookies per click, but hides the upgrade panel forever</div>
-            <div class="upgrade-cost">Cost: 25000 cookies</div>
-        </div>
-    </div>
-</div>
-
-<script>
-    class SacrificeClicker {
+class SacrificeClicker {
         constructor() {
-            this.cookies = 1111111110;
+            this.cookies = 0;
             this.totalClicks = 0;
             this.cookiesPerClick = 1;
             this.cookiesPerSecond = 0;
@@ -237,6 +165,3 @@
 
     // Start the game
     new SacrificeClicker();
-</script>
-</body>
-</html>
