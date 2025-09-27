@@ -82,7 +82,7 @@ class SacrificeClicker {
         if (!this.sacrifices.animations) {
             const effect = document.createElement('div');
             effect.className = 'click-effect';
-            effect.textContent = `+${this.doubloonsPerClick} cookies`;
+            effect.textContent = `+${this.doubloonsPerClick} doubloons`;
 
             effect.style.left = `${e.clientX}px`;
             effect.style.top  = `${e.clientY}px`;
