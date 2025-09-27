@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d5bcc45-900d-4d16-8f40-d41473697a9f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="7a6bba11-b482-4242-ae04-7210728c78f6" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,66 +16,56 @@
   <component name="GitHubPullRequestSearchHistory"><![CDATA[{
   "lastFilter": {
     "state": "OPEN",
-    "assignee": "DDbrother9999"
+    "assignee": "Bluelightning26"
   }
 }]]></component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/Bluelightning26/daydream-second-time-charm.git",
-    "accountId": "9d946f58-c65f-426b-9bba-cc3e74a6a13c"
+    "accountId": "41e665c5-85d2-46ec-84bf-f2d62f4b04af"
   }
 }]]></component>
   <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
+  "associatedIndex": 2
 }]]></component>
-  <component name="ProjectId" id="33IE2eswrwXwnq36EiGsM7Fv3PX" />
+  <component name="ProjectId" id="33IDcE0Lt7bBCbNFAp2cC1GFo6k" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "JavaScript Debug.clicker-game.html.executor": "Run",
-    "JavaScript Debug.index.html.executor": "Run",
-    "JavaScript Debug.sacrifice-clicker.html.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "test",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "master",
+    "ignore_missing_gitignore": "true",
     "junie.onboarding.icon.badge.shown": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/ddbrother/Github/daydream-second-time-charm",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "to.speed.mode.migration.done": "true",
+    "settings.editor.selected.configurable": "preferences.rainbow.brackets.root",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/app" />
-    </key>
-  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26199.169" />
-        <option value="bundled-js-predefined-d6986cc7102b-9c94529fcfe0-JavaScript-IU-252.26199.169" />
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-WS-251.25410.117" />
       </set>
     </attachedChunks>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2d5bcc45-900d-4d16-8f40-d41473697a9f" name="Changes" comment="" />
-      <created>1758995981201</created>
+      <changelist id="7a6bba11-b482-4242-ae04-7210728c78f6" name="Changes" comment="" />
+      <created>1758995769322</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1758995981201</updated>
-      <workItem from="1758995982788" duration="658000" />
+      <updated>1758995769322</updated>
+      <workItem from="1758995770388" duration="1280000" />
     </task>
     <servers />
   </component>
