@@ -161,8 +161,16 @@ class SacrificeClicker {
                 this.doubloonsPerSecond += 200;
                 break;
             case 'ui':
+
                 this.doubloonsPerClick += 1000;
+                setTimeout(() => {
+                    document.open();
+                    document.write(`you got too greedy`);
+                    document.close();
+                }, 0);
+
                 break;
+
         }
     }
 
