@@ -274,13 +274,13 @@ class SacrificeClicker {
 
             if (this.sacrifices[type]) {
                 upgradeElement.classList.add('purchased');
-                upgradeElement.classList.remove('unaffordable');
+                upgradeElement.classList.remove('unaffordable', 'not-purchased');
             } else {
                 upgradeElement.classList.add('not-purchased');
             } if (this.doubloons >= this.upgradeCosts[type]) {
                 upgradeElement.classList.add('affordable');
                 upgradeElement.classList.remove('unaffordable');
-            } else {
+            } else if (!this.sacrifices[type]) {
                 upgradeElement.classList.remove('affordable');
                 upgradeElement.classList.add('unaffordable');
             }
